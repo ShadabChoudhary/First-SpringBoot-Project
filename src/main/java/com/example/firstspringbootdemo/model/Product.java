@@ -1,5 +1,7 @@
 package com.example.firstspringbootdemo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,12 +12,15 @@ import lombok.Setter;
 //Constructors
 @AllArgsConstructor // this will create the constructor for each argument in Product class
 @NoArgsConstructor // this is how we can create no arg constructor using lombok
-public class Product {
-    private long id;
+@Entity //Hybernate checks where ever it find @Entity it will create a table for that
+public class Product extends BaseModel{
+    //Removing common parameters after adding it in BaseModel
     private String title;
     private String description;
     private double price;
-    private String url;
+    private String imageUrl;
+    @ManyToOne // FK busing cardinality, multiple products can have same category
+    //and to tell hibernate where we are using this cardinality hibernate has an annotation called mappedBy used in Category
     private Category  category;
 
     //getter and setter

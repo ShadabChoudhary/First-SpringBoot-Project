@@ -1,5 +1,6 @@
 package com.example.firstspringbootdemo.service;
 
+import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
 
 import java.util.List;
@@ -20,4 +21,25 @@ public class DbStoreProductService implements ProductService{
     public Product getSingleProduct(Long productId) {
         return null;
     }
+
+    @Override
+    public Product updateProduct(Long productId, Product product) {
+        return null;
+    }
+
+    @Override
+    public List<Product> getProductByCategory(String category) {
+        return null;
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return null;
+    }
+
+    @Override
+    public void deleteProduct(Long productId) {
+        //delete product
+    }
+
 }
