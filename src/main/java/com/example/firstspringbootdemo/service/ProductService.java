@@ -1,5 +1,6 @@
 package com.example.firstspringbootdemo.service;
 
+import com.example.firstspringbootdemo.exceptions.ProductNotFoundException;
 import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
 
@@ -9,7 +10,7 @@ public interface ProductService {
     //so right now we gave three methods in our Product controller
     Product createProduct(Product createProduct);
     List<Product> getAllProducts();
-    Product getSingleProduct(Long productId);
+    Product getSingleProduct(Long productId) throws ProductNotFoundException;
     Product updateProduct(Long productId, Product updateProduct);
     List<Product> getProductByCategory(String category);
     List<Category> getAllCategories();
