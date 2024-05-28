@@ -1,6 +1,7 @@
 package com.example.firstspringbootdemo.service;
 
 import com.example.firstspringbootdemo.dto.FakeStoreProductDto;
+import com.example.firstspringbootdemo.exceptions.ProductNotFoundException;
 import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
 import org.springframework.stereotype.Service;
@@ -54,11 +55,18 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
-    public Product getSingleProduct(Long productId) {
+    public Product getSingleProduct(Long productId) throws ProductNotFoundException {
         //now this method parse the data from fake store to our product model format which we have define
         FakeStoreProductDto getProduct = restTemplate.getForObject(
-                "https://fakestoreapi.com/products/" + productId, FakeStoreProductDto.class
+                "https://fakestoreapi.com/products/" + productId,
+                FakeStoreProductDto.class
         );
+
+        //whenever we call getSingleProduct if the product id does not exist it will return null
+        //means product with productId is not present
+        if(getProduct == null){
+            throw new ProductNotFoundException("Product not found with id "+productId);
+        }
         return getProduct.toProduct();
     }
 

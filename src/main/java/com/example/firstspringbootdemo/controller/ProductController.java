@@ -1,8 +1,12 @@
 package com.example.firstspringbootdemo.controller;
 
+import com.example.firstspringbootdemo.dto.ExceptionDto;
+import com.example.firstspringbootdemo.exceptions.ProductNotFoundException;
 import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
 import com.example.firstspringbootdemo.service.ProductService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,7 +41,7 @@ public class ProductController {
 
     //Get one product
     @GetMapping("/products/{id}")
-    public Product getProduct(@PathVariable("id") Long productId) {
+    public Product getProduct(@PathVariable("id") Long productId) throws ProductNotFoundException {
         //whenever we do a Get request on /products/{id}
         //this function is going to execute, and it will get the product of that particular id
         Product  currProduct = productService.getSingleProduct(productId);
@@ -69,5 +73,16 @@ public class ProductController {
     @DeleteMapping("https://fakestoreapi.com/products/{id}")
     public void deleteProduct(@PathVariable("id") Long productId) {
         productService.deleteProduct(productId);
+    }
+
+
+    //this annotation make sure if we get any error in ProductNotFoundException this will execute ad return the
+    //error message we have mentioned in the FakeStoreProductService
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ExceptionDto> handleProductNotFoundException(Exception e) {
+         ExceptionDto exceptionDto = new ExceptionDto();
+         exceptionDto.setMessage(e.getMessage());
+
+         return new ResponseEntity<>(exceptionDto, HttpStatus.NOT_FOUND);
     }
 }
