@@ -33,13 +33,19 @@ public class DbStoreProductService implements ProductService{
     }
 
     @Override
+    public List<Product> getProductsByCategoryId(Long categoryId) {
+        return List.of();
+    }
+
+    @Override
     public List<Category> getAllCategories() {
         return null;
     }
 
     @Override
-    public void deleteProduct(Long productId) {
+    public String deleteProduct(Long productId) {
         //delete product
+        return null;
     }
 
 }
