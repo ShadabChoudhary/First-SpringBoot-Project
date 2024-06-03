@@ -1,5 +1,6 @@
 package com.example.firstspringbootdemo.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,8 @@ public class Product extends BaseModel{
     private String description;
     private double price;
     private String imageUrl;
-    @ManyToOne // FK busing cardinality, multiple products can have same category
+    // FK using cardinality, multiple products can have same category
+    @ManyToOne(cascade = {CascadeType.PERSIST})//cascade make sure while creating a product if category doesn't exist it will create first
     //and to tell hibernate where we are using this cardinality hibernate has an annotation called mappedBy used in Category
     private Category  category;
 

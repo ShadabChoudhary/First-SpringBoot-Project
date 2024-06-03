@@ -20,8 +20,8 @@ import java.util.Date;
 public class BaseModel {
     //Base Model
     @Id // this will create PK for the table
-    //now we gave to create a PK which Unique so hibernate also can take care of it
-    @GeneratedValue(strategy = GenerationType.AUTO)//this will automatically PK and make sure each PK is unique
+    //now we have to create a PK which shou;d be Unique so hibernate also take care of it
+    @GeneratedValue(strategy = GenerationType.AUTO)//this will automatically create PK and make sure each PK is unique
     private long id;
     private Date createdAt;
     private Date updatedAt;

@@ -82,7 +82,8 @@ public class FakeStoreProductService implements ProductService{
 
         restTemplate.put(
                 "https://fakestoreapi.com/products/"+productId,
-                fs
+//                fs
+                FakeStoreProductDto.class
         );
         return fs.toProduct();
     }
@@ -102,6 +103,11 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
+    public List<Product> getProductsByCategoryId(Long categoryId) {
+        return List.of();
+    }
+
+    @Override
     public List<Category> getAllCategories() {
         String[] fs = restTemplate.getForObject(
                 "https://fakestoreapi.com/products/categories",
@@ -118,10 +124,11 @@ public class FakeStoreProductService implements ProductService{
 
     //giving error
     @Override
-    public void deleteProduct(Long productId) {
+    public String deleteProduct(Long productId) {
         restTemplate.delete(
                 "https://fakestoreapi.com/products/"+productId,
                 FakeStoreProductDto.class
         );
+        return "Deleted product with id "+productId;
     }
 }

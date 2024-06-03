@@ -11,11 +11,12 @@ public interface ProductService {
     Product createProduct(Product createProduct);
     List<Product> getAllProducts();
     Product getSingleProduct(Long productId) throws ProductNotFoundException;
-    Product updateProduct(Long productId, Product updateProduct);
+    Product updateProduct(Long productId, Product updateProduct) throws ProductNotFoundException;
     List<Product> getProductByCategory(String category);
+    List<Product> getProductsByCategoryId(Long categoryId);
     List<Category> getAllCategories();
-    void deleteProduct(Long productId);
+    String deleteProduct(Long productId);
 
-    //now we want to implement all these methods so lets creating one more service class fakeStoreProductService
+    //now we want to implement all these methods so let's create one more service class fakeStoreProductService
     //which is going to access all our methods from this interface
 }
