@@ -13,7 +13,7 @@ public interface ProductService {
     Product getSingleProduct(Long productId) throws ProductNotFoundException;
     Product updateProduct(Long productId, Product updateProduct) throws ProductNotFoundException;
     List<Product> getProductByCategory(String category);
-    List<Product> getProductsByCategoryId(Long categoryId);
+    List<Product> getProductsByCategoryId(Long categoryId) throws ProductNotFoundException;
     List<Category> getAllCategories();
     String deleteProduct(Long productId);
 

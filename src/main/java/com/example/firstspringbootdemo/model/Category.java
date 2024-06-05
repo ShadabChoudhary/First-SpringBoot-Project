@@ -20,7 +20,7 @@ public class Category extends BaseModel{
     //And extend this model to BaseModel
     private String title;
     @OneToMany(mappedBy = "category")
-    //this will ignore when we try to get only one product from database, otherwise it will return a list of products
+    //We use JsonIgnore when we have to ignore any field as part of our response
     @JsonIgnore
     private List<Product> products;
 }

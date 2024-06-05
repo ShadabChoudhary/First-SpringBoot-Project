@@ -61,25 +61,30 @@ public class ProductController {
          return update;
     }
 
-    //Get Product by category
-    @GetMapping("https://fakestoreapi.com/products/category/{categoryTitle}")
+//    Get Product by category
+    @GetMapping("/products/category/{categoryTitle}")
     public List<Product> getProductByCategory(@PathVariable("categoryTitle") String category) {
          //here we are returning a list of product by their category name
         return productService.getProductByCategory(category);
     }
 
+    //get products by category id not working
+//    @GetMapping("/products/category/{categoryId}")
+//    public List<Product> getProductsByCategoryId(@PathVariable("categoryId") Long categoryId) throws ProductNotFoundException{
+//        return productService.getProductsByCategoryId(categoryId);
+//    }
+
     //get all the category name
-    @GetMapping("https://fakestoreapi.com/products/categories")
+    @GetMapping("/products/categories")
     public List<Category> getAllCategories() {
         //return products category name
         return productService.getAllCategories();
     }
 
     //delete a product giving error
-    @DeleteMapping("https://fakestoreapi.com/products/{id}")
+    @DeleteMapping("/products/{id}")
     public String deleteProduct(@PathVariable("id") Long productId) {
-        String productDeleted = productService.deleteProduct(productId);
-        return productDeleted;
+        return productService.deleteProduct(productId);
     }
 
 
