@@ -44,8 +44,8 @@ public class SelfProductService implements ProductService{
 
     @Override
     public List<Product> getAllProducts() {
-
-        return List.of();
+        List<Product> getAll = productRepository.findAll();
+        return getAll;
     }
 
     @Override
@@ -77,21 +77,26 @@ public class SelfProductService implements ProductService{
             }else{
                 throw new ProductNotFoundException("Category not found");
             }
-            //again insert all the changes in the DB
+            //insert all the changes in the DB
             return productRepository.save(product);
         }
         throw new ProductNotFoundException("not found");
     }
 
     @Override
-    public List<Product> getProductByCategory(String category) {
-
-        return List.of();
+    public List<Product> getProductByCategory(String category){
+        Category cat = categoryRepository.findByTitle(category);
+        return cat.getProducts();
     }
 
+    //not working
     @Override
-    public List<Product> getProductsByCategoryId(Long categoryId) {
-        return List.of();
+    public List<Product> getProductsByCategoryId(Long categoryId) throws ProductNotFoundException {
+        Optional<Category> cat = categoryRepository.findById(categoryId);
+        if(cat.isPresent()) {
+            return productRepository.findByCategoryId(categoryId);
+        }
+        throw new ProductNotFoundException("Category not found");
     }
 
     @Override
@@ -101,6 +106,8 @@ public class SelfProductService implements ProductService{
 
     @Override
     public String deleteProduct(Long productId) {
-        return null;
+        productRepository.deleteById(productId);
+
+        return "Product with id :"+productId+" deleted successfully";
     }
 }
