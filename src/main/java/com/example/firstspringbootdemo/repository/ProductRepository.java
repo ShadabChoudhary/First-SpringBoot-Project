@@ -18,7 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Product save(Product product);
     // and if we want to get something from our table just use findBy and the name of the attribute it will get the details
     Product findById(long id);
-    List<Product> findByCategoryId(long categoryId);
 
     //How to implement HQL (Hibernate Query Language)
     //here we are getting all the products from the table using categoryId

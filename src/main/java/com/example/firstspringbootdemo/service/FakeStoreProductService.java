@@ -108,18 +108,21 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
-    public List<Category> getAllCategories() {
-        String[] fs = restTemplate.getForObject(
-                "https://fakestoreapi.com/products/categories",
-                String[].class
-        );
-        List<Category> list = new ArrayList<>();
-        for(String cat : fs){
-            Category c = new Category();
-            c.setTitle(cat);
-            list.add(c);
-        }
-        return list;
+
+    public List<String> getAllCategories() {
+//    change the datatype in ProductService and productController before uncommenting
+//        String[] fs = restTemplate.getForObject(
+//                "https://fakestoreapi.com/products/categories",
+//                String[].class
+//        );
+//        List<Category> list = new ArrayList<>();
+//        for(String cat : fs){
+//            Category c = new Category();
+//            c.setTitle(cat);
+//            list.add(c);
+//        }
+//        return list;
+        return List.of();
     }
 
     //giving error
