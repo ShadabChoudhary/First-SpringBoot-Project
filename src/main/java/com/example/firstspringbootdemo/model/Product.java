@@ -24,7 +24,7 @@ public class Product extends BaseModel{
     // FK using cardinality, multiple products can have same category
     @ManyToOne(cascade = {CascadeType.PERSIST})//cascade make sure while creating a product if category doesn't exist it will create first
     //and to tell hibernate where we are using this cardinality hibernate has an annotation called mappedBy used in Category
-    @JoinColumn(name = "category_id")// joining category table to get all the product of specific category id
+//    @JoinColumn(name = "category_id")// joining category table to get all the product of specific category id
     private Category  category;
 
     //getter and setter

@@ -38,7 +38,7 @@ public class DbStoreProductService implements ProductService{
     }
 
     @Override
-    public List<Category> getAllCategories() {
+    public List<String> getAllCategories() {
         return null;
     }
 

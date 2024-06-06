@@ -68,7 +68,7 @@ public class ProductController {
         return productService.getProductByCategory(category);
     }
 
-    //get products by category id not working
+    //Both, above and this api somehow springboot taking them as same so only on is working at a time
 //    @GetMapping("/products/category/{categoryId}")
 //    public List<Product> getProductsByCategoryId(@PathVariable("categoryId") Long categoryId) throws ProductNotFoundException{
 //        return productService.getProductsByCategoryId(categoryId);
@@ -76,7 +76,7 @@ public class ProductController {
 
     //get all the category name
     @GetMapping("/products/categories")
-    public List<Category> getAllCategories() {
+    public List<String> getAllCategories() {
         //return products category name
         return productService.getAllCategories();
     }
@@ -88,7 +88,7 @@ public class ProductController {
     }
 
 
-    //this annotation make sure if we get any error in ProductNotFoundException this will execute ad return the
+    //this annotation make sure if we get any error in ProductNotFoundException this will execute and return the
     //error message we have mentioned in the FakeStoreProductService
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ExceptionDto> handleProductNotFoundException(Exception e) {

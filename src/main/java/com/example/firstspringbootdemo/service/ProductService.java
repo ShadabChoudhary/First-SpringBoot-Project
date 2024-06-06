@@ -14,7 +14,7 @@ public interface ProductService {
     Product updateProduct(Long productId, Product updateProduct) throws ProductNotFoundException;
     List<Product> getProductByCategory(String category);
     List<Product> getProductsByCategoryId(Long categoryId) throws ProductNotFoundException;
-    List<Category> getAllCategories();
+    List<String> getAllCategories();
     String deleteProduct(Long productId);
 
     //now we want to implement all these methods so let's create one more service class fakeStoreProductService
