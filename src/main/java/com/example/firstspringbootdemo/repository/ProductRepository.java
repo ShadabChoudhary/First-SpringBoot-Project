@@ -1,16 +1,11 @@
 package com.example.firstspringbootdemo.repository;
 
-import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
-import org.hibernate.query.NativeQuery;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 //repository helps to fill the gap between our actual model and database so they both interact to each other
 //And JpaRepository is going to take the object we are working and the datatype of our PK

@@ -2,7 +2,6 @@ package com.example.firstspringbootdemo.service;
 
 import com.example.firstspringbootdemo.dto.FakeStoreProductDto;
 import com.example.firstspringbootdemo.exceptions.ProductNotFoundException;
-import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;

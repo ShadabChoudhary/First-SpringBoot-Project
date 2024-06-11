@@ -1,11 +1,8 @@
 package com.example.firstspringbootdemo.service;
 
 import com.example.firstspringbootdemo.exceptions.ProductNotFoundException;
-import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
-
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 //now creating an interface for ProductController so that we can access all the methods from it
