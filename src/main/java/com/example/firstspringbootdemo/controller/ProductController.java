@@ -6,6 +6,7 @@ import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
 import com.example.firstspringbootdemo.service.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,11 +38,11 @@ public class ProductController {
 
     //Get all the products
     @GetMapping("/products")
-    public List<Product> getAllProduct() {
+    public Page<Product> getAllProduct(@RequestParam("pageSize") int pageSize, @RequestParam("pageNumber") int pageNumber) {
         //whenever we do a Get request on /products
         //this function is going to execute, and it will get all the product
-         List<Product> allProducts = productService.getAllProducts();
-         return allProducts;
+         return productService.getAllProducts(pageSize, pageNumber);
+//         return allProducts();
     }
 
     //Get one product

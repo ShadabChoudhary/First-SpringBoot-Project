@@ -4,6 +4,7 @@ import com.example.firstspringbootdemo.dto.FakeStoreProductDto;
 import com.example.firstspringbootdemo.exceptions.ProductNotFoundException;
 import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -39,19 +40,21 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
-    public List<Product> getAllProducts() {
+    public Page<Product> getAllProducts(int pageSize, int pageNumber) {
         //Here I want all the products so Create a List of FakeStoreProductDto to store all the products
         //getting all the products from fake store converting it to object storing it in the array
-        FakeStoreProductDto[] fs = restTemplate.getForObject(
-                "https://fakestoreapi.com/products",
-                FakeStoreProductDto[].class
-        );
-        //now storing all the products from FakeStoreProductDto[] in to list
-        List<Product> list = new ArrayList<>();
-        for(FakeStoreProductDto fsProductDto : fs){
-            list.add(fsProductDto.toProduct());
-        }
-        return list;
+
+        //using Page to get data from DB in selfProductService
+//        FakeStoreProductDto[] fs = restTemplate.getForObject(
+//                "https://fakestoreapi.com/products",
+//                FakeStoreProductDto[].class
+//        );
+//        //now storing all the products from FakeStoreProductDto[] in to list
+//        List<Product> list = new ArrayList<>();
+//        for(FakeStoreProductDto fsProductDto : fs){
+//            list.add(fsProductDto.toProduct());
+//        }
+        return null;
     }
 
     @Override

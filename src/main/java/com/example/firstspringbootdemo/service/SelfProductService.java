@@ -5,8 +5,8 @@ import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
 import com.example.firstspringbootdemo.repository.CategoryRepository;
 import com.example.firstspringbootdemo.repository.ProductRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,8 +43,10 @@ public class SelfProductService implements ProductService{
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        List<Product> getAll = productRepository.findAll();
+    public Page<Product> getAllProducts(int pageSize, int pageNumber) {
+        //Now here instead of using normal List of products we will be using Page because it comes with a bunch of features in it
+        //one can set how many products we want in a page so that the loading period is less when we are dealing with millions of products
+        Page<Product> getAll = productRepository.findAll(PageRequest.of(pageNumber, pageSize));
         return getAll;
     }
 

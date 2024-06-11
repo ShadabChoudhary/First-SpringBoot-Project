@@ -3,6 +3,8 @@ package com.example.firstspringbootdemo.repository;
 import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
 import org.hibernate.query.NativeQuery;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,6 +20,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Product save(Product product);
     // and if we want to get something from our table just use findBy and the name of the attribute it will get the details
     Product findById(long id);
+
+    //adding pagination to my get products
+//    Page<Product> findBy(Pageable );
 
     //How to implement HQL (Hibernate Query Language)
     //here we are getting all the products from the table using categoryId
