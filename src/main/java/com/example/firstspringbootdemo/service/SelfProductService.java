@@ -7,6 +7,7 @@ import com.example.firstspringbootdemo.repository.CategoryRepository;
 import com.example.firstspringbootdemo.repository.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,7 +47,9 @@ public class SelfProductService implements ProductService{
     public Page<Product> getAllProducts(int pageSize, int pageNumber) {
         //Now here instead of using normal List of products we will be using Page because it comes with a bunch of features in it
         //one can set how many products we want in a page so that the loading period is less when we are dealing with millions of products
-        Page<Product> getAll = productRepository.findAll(PageRequest.of(pageNumber, pageSize));
+        //---------------------we can also sort the product during pagination at the same time, and we can use multiple sorting also
+        Page<Product> getAll = productRepository.findAll(PageRequest.of(pageNumber, pageSize,
+                                Sort.by("price").and(Sort.by("title"))));
         return getAll;
     }
 
