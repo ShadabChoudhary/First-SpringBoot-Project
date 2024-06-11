@@ -2,6 +2,7 @@ package com.example.firstspringbootdemo.service;
 
 import com.example.firstspringbootdemo.model.Category;
 import com.example.firstspringbootdemo.model.Product;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -13,8 +14,8 @@ public class DbStoreProductService implements ProductService{
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        return List.of();
+    public Page<Product> getAllProducts(int pageSize, int PageNumber) {
+        return null;
     }
 
     @Override
